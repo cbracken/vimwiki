@@ -127,6 +127,9 @@ function! vimwiki#base#resolve_link(link_text, ...) abort
   " other style links don't allow '\'
   let link_text = substitute(a:link_text, '\(\\\)\(\W\)\@=', '', 'g')
 
+  " replace spaces with '-' to match GitHub link resolution behaviour.
+  let link_text = substitute(link_text, ' ', '-', 'g')
+
   let link_infos = {
         \ 'index': -1,
         \ 'scheme': '',
